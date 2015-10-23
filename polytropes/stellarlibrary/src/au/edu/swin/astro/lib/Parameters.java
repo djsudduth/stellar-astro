@@ -6,9 +6,6 @@ public class Parameters {
 	public double y;
 	public double t;
 	
-	public Parameters() {
-		
-	}
 
 	public Parameters (double in_yprime, double in_y, double in_t) {
 		yprime = in_yprime;

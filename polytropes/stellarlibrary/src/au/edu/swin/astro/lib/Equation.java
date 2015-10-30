@@ -7,6 +7,7 @@ public abstract class Equation {
 	// Used by the Euler, Runge-Kutta, etc classes
 	
 	abstract Parameters getResult(BigDecimal h, Parameters p);
+	abstract DParameters getDResult(double h, DParameters p);
 	/*	
 		Parameters pNew = new Parameters();
 		

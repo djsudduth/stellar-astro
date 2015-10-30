@@ -6,6 +6,8 @@ public class Parameters {
 	public BigDecimal yprime;
 	public BigDecimal y;
 	public BigDecimal t;
+	public BigDecimal k;
+	public BigDecimal m;
 	
 	public Parameters () {
 	}

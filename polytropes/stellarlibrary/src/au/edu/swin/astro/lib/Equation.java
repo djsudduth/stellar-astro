@@ -1,39 +1,17 @@
 package au.edu.swin.astro.lib;
+import java.math.BigDecimal;;
 
-public class Equation {
-	
-	public Parameters resultValues[];
-	int tIncrements;
-	double h;
-	
-	// Constructor for ODE equation for array of results
-	public Equation(int totalIncrements, double hInterval, Parameters startParams) {
-		
-		// Initialize the value object array to the total number of iterations - 
-		// Memory heap should be about 60 bytes * totalIncrements
-		tIncrements = totalIncrements;
-		h = hInterval;
-		resultValues = new Parameters[totalIncrements];
-		resultValues[0] = new Parameters(0.0D, 0.0D, 0.0D);
-		
-		// Set the starting values for the parameter array
-		resultValues[0].yprime = startParams.yprime;
-		resultValues[0].y = startParams.y;
-		resultValues[0].t = startParams.t;
-		
-	}
-	
-	
-	
+public abstract class Equation {
 	
 	// Use this class to define the ODE equation needed in the numerical calculation
 	// Used by the Euler, Runge-Kutta, etc classes
-	public Parameters getResult(Parameters p) {
+	
+	abstract Parameters getResult(BigDecimal h, Parameters p);
+	/*	
+		Parameters pNew = new Parameters();
 		
-		Parameters pNew = new Parameters(0.0D, 0.0D, 0.0D);
-		
-		pNew.y = p.y + h*p.yprime;
-		pNew.t = p.t + h;
+		pNew.y = roundToSignificantFigures(p.y + h*p.yprime, 9);
+		pNew.t = roundToSignificantFigures(p.t + h, 9);
 		
 		// Example 1 - first order ODE;
 		//Y' = (2 - e^(-4*t)-2*Y)  actual solution is  Y =(1 + 0.5*e^(-4*t)-0.5*e^(-2*t))
@@ -41,23 +19,21 @@ public class Equation {
 		// End Example 1
 			
 		return(pNew);
-	}
+	*/
+
+
 	
-	public void run() {
-		
-		int i;
-		
-		// Populate the result array value object through each increment
-		for (i = 0; i < tIncrements-1; i++) {
-			
-			resultValues[i+1] = getResult(resultValues[i]);
-			
-		}
-	}
-	
-	
-	public Parameters getValues(int i) {
-		return(resultValues[i]);
+	public static double roundToSignificantFigures(double num, int n) {
+	    if(num == 0) {
+	        return 0;
+	    }
+
+	    final double d = Math.ceil(Math.log10(num < 0 ? -num: num));
+	    final int power = n - (int) d;
+
+	    final double magnitude = Math.pow(10, power);
+	    final long shifted = Math.round(num*magnitude);
+	    return shifted/magnitude;
 	}
 
 }

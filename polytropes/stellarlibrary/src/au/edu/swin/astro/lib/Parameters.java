@@ -1,13 +1,17 @@
 package au.edu.swin.astro.lib;
+import java.math.*;
 
 public class Parameters {
 	
-	public double yprime;
-	public double y;
-	public double t;
+	public BigDecimal yprime;
+	public BigDecimal y;
+	public BigDecimal t;
 	
-
-	public Parameters (double in_yprime, double in_y, double in_t) {
+	public Parameters () {
+	}
+	
+	
+	public Parameters (BigDecimal in_yprime, BigDecimal in_y, BigDecimal in_t) {
 		yprime = in_yprime;
 		y = in_y;
 		t = in_t;

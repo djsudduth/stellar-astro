@@ -1,38 +1,52 @@
 package au.edu.swin.astro.lib;
+import java.math.*;
 
 public class Euler {
 	
-	Parameters resultP = new Parameters(0.0D, 0.0D, 0.0D);
-	final int INCREMENTS = 40;
-	int i;
-
-	public Euler() {
-
-	}
+    public int tIncrements = 0;
+    public BigDecimal h;
+	private int i;
+	private Parameters resultValues[];
 	
-	public void runIteration() {
-
-		Parameters startParams = new Parameters(-1.0D, 1.0D, 0.0D);
-		
-		Equation eqFirstODE = new Equation(INCREMENTS, 0.01D, startParams);
-		eqFirstODE.run();
-		
-		for (i = 0; i < INCREMENTS; i++) {
-			resultP = eqFirstODE.getValues(i);
-			System.out.println(Double.toString(resultP.t) + " " + Double.toString(resultP.y));
+	
+	//Initialize the class with the total number of needed increments, interval and  
+	//  starting parameters
+	//
+	 public Euler (int totalIncrements, BigDecimal hInterval, Parameters startParams)	
+	 {
+		// Initialize the value object array to the total number of iterations - 
+		// Memory heap should be about 60 bytes * totalIncrements
+		tIncrements = totalIncrements;
+		h = hInterval;
+		resultValues = new Parameters[totalIncrements];
+		resultValues[0] = new Parameters();
 			
+		// Set the starting values for the parameter array
+		resultValues[0].yprime = startParams.yprime;
+		resultValues[0].y = startParams.y;
+		resultValues[0].t = startParams.t;
+
+	}
+	 
+
+	
+	public void runIteration(Equation eqODE) {
+				
+		// Populate the result array value object through each increment
+		for (i = 0; i < tIncrements-1; i++) {
+			
+			System.out.println((resultValues[i].t) + " " + (resultValues[i].y));
+			resultValues[i+1] = eqODE.getResult(h, resultValues[i]);
 		}
-		
-		
 	}
 	
 	
-    public static void main(String args[]) {
-    	
-    	Euler e = new Euler();
-    	e.runIteration();
-    	//double z = (2.0 - Math.exp(-4.0 * (0.1)) - (2.0*0.9));
-        //System.out.println(Double.toString(z));
-    }
+	
+	public Parameters getValues(int i) {
+		return(resultValues[i]);
+}
+	
+	
+
 
 }

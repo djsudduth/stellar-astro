@@ -1,6 +1,9 @@
 package au.edu.swin.astro.lib;
 import java.math.*;
 
+// This class was used to compare Java double precision with Java BigDecimal precision
+//   it is a test class only
+//
 public class DEuler {
 	
     public int tIncrements = 0;
@@ -25,28 +28,24 @@ public class DEuler {
 		resultValues[0].yprime = startParams.yprime;
 		resultValues[0].y = startParams.y;
 		resultValues[0].t = startParams.t;
-
 	}
 	 
 
-	
+	// Runs the simple Euler ODE numerical method
+	//
 	public void runIteration(Equation eqODE) {
 				
 		// Populate the result array value object through each increment
 		for (i = 0; i < tIncrements-1; i++) {
-			
-			System.out.println((resultValues[i].t) + " " + (resultValues[i].y));
 			resultValues[i+1] = eqODE.getDResult(h, resultValues[i]);
 		}
 	}
 	
 	
-	
-	public DParameters getValues(int i) {
+	// Returns the values in the array
+	//
+	public DParameters getValues(int i) {	
 		return(resultValues[i]);
-}
+	}
 	
-	
-
-
 }

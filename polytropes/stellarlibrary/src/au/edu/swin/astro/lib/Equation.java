@@ -1,29 +1,20 @@
 package au.edu.swin.astro.lib;
-import java.math.BigDecimal;;
+import java.math.BigDecimal;
 
+
+// This class is an abstract class for first and second order ODE equations
+//   Equations are encapsulated in their own classes but use this as a base class for
+//   generalization. Inherited by the Euler, Runge-Kutta, and other numerical method classes
+//
 public abstract class Equation {
-	
-	// Use this class to define the ODE equation needed in the numerical calculation
-	// Used by the Euler, Runge-Kutta, etc classes
-	
+		
 	abstract Parameters getResult(BigDecimal h, Parameters p);
 	abstract DParameters getDResult(double h, DParameters p);
-	/*	
-		Parameters pNew = new Parameters();
-		
-		pNew.y = roundToSignificantFigures(p.y + h*p.yprime, 9);
-		pNew.t = roundToSignificantFigures(p.t + h, 9);
-		
-		// Example 1 - first order ODE;
-		//Y' = (2 - e^(-4*t)-2*Y)  actual solution is  Y =(1 + 0.5*e^(-4*t)-0.5*e^(-2*t))
-		pNew.yprime = (2.0D - Math.exp(-4.0D * (pNew.t)) - (2.0D*pNew.y));
-		// End Example 1
-			
-		return(pNew);
-	*/
 
 
-	
+	// This parent function is for any inherited equation classes that use doubles instead of 
+	//   BigIntegers. Allows any inherited class to round doubles.
+	//
 	public static double roundToSignificantFigures(double num, int n) {
 	    if(num == 0) {
 	        return 0;

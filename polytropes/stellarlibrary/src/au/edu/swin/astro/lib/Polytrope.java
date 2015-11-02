@@ -10,6 +10,7 @@ public class Polytrope {
 		BigDecimal H = new BigDecimal("0.01");
 		int tIncrements = 700;
 		double n = 3.0D;
+		int skipFlag = 0;
 		String sOutputPath = "";
 		
 		// User entered values
@@ -22,6 +23,10 @@ public class Polytrope {
 		        if (args.length > 3) {
 		        	sOutputPath = args[3];
 		        }
+		        if (args.length > 4) {
+		        	skipFlag = Integer.parseInt(args[4]);
+		        }
+
 		    } catch (Exception e) {
 		    	System.out.println("Parameters are total increments, increment value, polytropic index, path to output file");
 		        System.err.println(e.toString());
@@ -40,19 +45,33 @@ public class Polytrope {
 		secondOrderOde.runIteration(leEq);
 		
 		
-		// Create output data
+		// Create output data to screen and/or file
 		try {
+			int skipInterval = tIncrements/1500;
 			PrintWriter pw = null;
+			
+			// Open print to file if indicated
 			if (sOutputPath.length() > 0) {
 				pw = new PrintWriter(sOutputPath, "UTF-8");
 				pw.println("YIntersection=" + secondOrderOde.getYIntersection() + "," + "Polytropic Index="+ n);
 			}
 				
+			// Print out all values. Skipping values is indicated with flag to reduce number of points
 			for (int i = 0; i < tIncrements; i++) {
-				if (sOutputPath.length() > 0) {
-					pw.println((secondOrderOde.getValues(i).t) + "," + (secondOrderOde.getValues(i).y) + "," + (secondOrderOde.getValues(i).yprime));
+				if (skipFlag > 0) {
+					if ((sOutputPath.length() > 0) && (i%skipInterval == 0)) {
+						pw.println((secondOrderOde.getValues(i).t) + "," + (secondOrderOde.getValues(i).y) + "," + (secondOrderOde.getValues(i).yprime));
+						System.out.println((secondOrderOde.getValues(i).t) + " " + (secondOrderOde.getValues(i).y) + " " + (secondOrderOde.getValues(i).yprime));
+					}
 				}
-				System.out.println((secondOrderOde.getValues(i).t) + " " + (secondOrderOde.getValues(i).y) + " " + (secondOrderOde.getValues(i).yprime));
+				// Print out all values with no skipping
+				else {
+					if (sOutputPath.length() > 0) {
+						pw.println((secondOrderOde.getValues(i).t) + "," + (secondOrderOde.getValues(i).y) + "," + (secondOrderOde.getValues(i).yprime));
+					}
+					System.out.println((secondOrderOde.getValues(i).t) + " " + (secondOrderOde.getValues(i).y) + " " + (secondOrderOde.getValues(i).yprime));
+				}
+
 			}		
 			if (sOutputPath.length() > 0) {pw.close();}
 			

@@ -53,7 +53,7 @@ public class Polytrope {
 			// Open print to file if indicated
 			if (sOutputPath.length() > 0) {
 				pw = new PrintWriter(sOutputPath, "UTF-8");
-				pw.println("YIntersection=" + secondOrderOde.getYIntersection() + "," + "Polytropic Index="+ n);
+				pw.println("YIntersection=" + secondOrderOde.getYIntersection() + ", " + "YPrime Intersection=" + secondOrderOde.getYPrimeIntersection() + ", " + "Polytropic Index="+ n);
 			}
 				
 			// Print out all values. Skipping values is indicated with flag to reduce number of points

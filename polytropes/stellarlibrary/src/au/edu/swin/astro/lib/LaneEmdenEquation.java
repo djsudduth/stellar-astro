@@ -52,6 +52,9 @@ public class LaneEmdenEquation extends Equation {
 	}
 	
 	
+	// Use this method to define the 2nd order ODE needed if using doubles
+	//
+
 	public DParameters getDResult(double h, DParameters p) {
 		
 		DParameters pNew = new DParameters();

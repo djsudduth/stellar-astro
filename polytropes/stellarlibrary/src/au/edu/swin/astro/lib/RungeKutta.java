@@ -1,9 +1,18 @@
 package au.edu.swin.astro.lib;
 import java.math.BigDecimal;
 
-//This is the Runge-Kutta 4th order method - the underlying equation is called four times
-//  to calculate both the slopes and k1, m1 through k4 and m4 values
-//
+/*
+####################################################################################
+## RungeKutta.java
+##
+## This class encapsulates the Runge-Kutta 4th order method - the underlying equation
+## is called four times and requires an 2nd order ODE equation object. Data is stored
+## in a Paramaters class data array object.
+## Copyright (C) 2015  Don Sudduth: 9764909@student.swin.edu.au
+##
+####################################################################################
+*/
+
 public class RungeKutta {
 	
 	    private int tIncrements = 0;
@@ -38,8 +47,8 @@ public class RungeKutta {
 		public void runIteration(Equation eqODE) {
 			
 			// Scope these variables only within the function
-			BigDecimal k1, k2, k3, k4, kd1, kd2, kd3, kd4;
-			BigDecimal m1, m2, m3, m4, md1, md2, md3, md4;
+			BigDecimal k1, k2, k3, k4, kd1, kd2, kd3;
+			BigDecimal m1, m2, m3, m4, md1, md2, md3;
 			BigDecimal h2, y, yprime, t, yf, zf, two, ylast, yprimelast;
 			Parameters temp, rk1, rk2, rk3, rk4;
 			
@@ -128,12 +137,10 @@ public class RungeKutta {
 					double w1 = yprime.doubleValue();
 					double w2 = yprimelast.doubleValue();
 					
-					// Interpolate the difference across y intersection
+					// Interpolate the difference across y slope intersection
 					double wdiff = (w1 - w2);
 					yprimeintersection = w1 - (wdiff*diff);
-					wdiff = 0.0D;
-
-					
+					wdiff = 0.0D;	
 				}
 				
 			}

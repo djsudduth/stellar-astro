@@ -1,10 +1,18 @@
 package au.edu.swin.astro.lib;
 import java.math.*;
 
-//This class is the simple Euler numerical method using BigDecimal high precision math
-//  The equation used is passed in wrapped by its own class with the method called
-//  getResult which will populate the data array (Parameters) for each increment
-//
+/*
+################################################################################
+## Euler.java
+##
+## This class encapsulates the simple Euler method - the underlying equation
+## is used is passed and requires a 2nd order ODE equation object. Data is 
+## stored in a Paramaters class data array object.
+## Copyright (C) 2015  Don Sudduth: 9764909@student.swin.edu.au
+##
+################################################################################
+*/
+
 public class Euler {
 	
     public int tIncrements = 0;

@@ -64,7 +64,6 @@ public class LaneEmdenEquation extends Equation {
 		
 		//Y'' = Y' + h*(-2(Y'/t) - Y^n)
 		pNew.yprime = p.yprime + h*(-2.0D*(p.yprime/p.t) - Math.pow(p.y, n));
-	
 		pNew.t = p.t + h;
 			
 		return(pNew);

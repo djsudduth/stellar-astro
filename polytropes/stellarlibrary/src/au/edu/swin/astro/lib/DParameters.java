@@ -1,8 +1,16 @@
 package au.edu.swin.astro.lib;
 
-//This data value class was used to compare Java double precision with Java BigDecimal precision
-//  it is a test class only. 
-//
+/*
+########################################################################################
+## DParameters.java
+##
+## This is the data class to hold the calculated values for the dimensionless density
+## and dimensionless radius --the equation classes populate an array of this data class
+## during iterations.  (Uses double data types instead of BigDecimal)
+## Copyright (C) 2015  Don Sudduth: 9764909@student.swin.edu.au
+##
+########################################################################################
+*/
 
 public class DParameters {
 	

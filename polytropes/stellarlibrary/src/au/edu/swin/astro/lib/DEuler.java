@@ -1,9 +1,16 @@
 package au.edu.swin.astro.lib;
-import java.math.*;
 
-// This class was used to compare Java double precision with Java BigDecimal precision
-//   it is a test class only
-//
+/*
+################################################################################
+## DEuler.java
+##
+## This class encapsulates the simple Euler method - the underlying equation
+## is used is passed and requires a 2nd order ODE equation object. Data is 
+## stored in a Paramaters class data array object. (Uses double data types)
+## Copyright (C) 2015  Don Sudduth: 9764909@student.swin.edu.au
+##
+################################################################################
+*/
 public class DEuler {
 	
     public int tIncrements = 0;

@@ -2,6 +2,18 @@ package au.edu.swin.astro.lib;
 import java.math.*;
 import java.io.*;
 
+/*
+####################################################################################
+## Polytrope.java
+##
+## This module is main class that calls the RK4 methods for the Lane-Emden equation.
+## Note that the y-axis values are labeled with y and x-axis labeled with t for
+## generalized ODEs.
+## Copyright (C) 2015  Don Sudduth: 9764909@student.swin.edu.au
+##
+####################################################################################
+*/
+
 public class Polytrope {
 	
 	public static void main(String[] args) {
@@ -38,6 +50,9 @@ public class Polytrope {
 		    }
 		}
 		
+		// Start the calculations
+		System.out.println("Begin data calculation process: Iterations="+tIncrements+" Step Size="+args[1]+" Polytropic Index="+n);
+			
 		// Setup the ODE starting values of Y', Y and t in the Parameters data array
 		Parameters startParams = new Parameters(BigDecimal.ZERO, new BigDecimal("1.0000000000"), new BigDecimal("0.0000000001"));
 		

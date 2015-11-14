@@ -52,7 +52,7 @@ public class Polytrope {
 		}
 		
 		// Start the calculations
-		System.out.println("Begin data calculation process: Iterations="+tIncrements+" Step Size="+args[1]+" Polytropic Index="+n);
+		System.out.println("Begin data calculation process: Iterations="+tIncrements+" Polytropic Index="+n);
 			
 		// Setup the ODE starting values of Y', Y and t in the Parameters data array
 		Parameters startParams = new Parameters(BigDecimal.ZERO, new BigDecimal("1.0000000000"), new BigDecimal("0.0000000001"));

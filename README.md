@@ -11,12 +11,12 @@ Input Parameters:
 - Iteration step size (required)
 - Polytropic index (required)
 - Output data file path (optional)  NOTE: file is comma delimited with a header
-- Output file data skip value (optional)  NOTE: this value will output only every (total_iterations / skip_value)
+- Output file data skip value (optional)  NOTE: this value will output only the total number entered here. All iterations are still calculated.
 
 Usage:
 > "java -jar Polytrope.jar 70000 0.0001 3.0 c:/astro/data/polytropicindex3.csv 1500"
 
-(in this example there are 70000 iterations are calculated for a polytropic index of 3.0 but only ~1500 values will be output to the data file located at the desired path)
+(in this example there are 70000 iterations are calculated for a polytropic index of 3.0 but only ~1500 of those values will be output to the data file located at the desired path. If the 1500 is removed then all 70000 will be output.)
 
 
 

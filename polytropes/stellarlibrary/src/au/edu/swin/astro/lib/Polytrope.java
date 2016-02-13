@@ -17,7 +17,7 @@ import java.io.*;
 
 public class Polytrope {
 	
-	// This is the main class that starts the polytropic calculations
+	// This is the main class that starts the polytropic calculations today
 	public static void main(String[] args) {
 		
 		// Default runtime arguments

@@ -19,5 +19,5 @@ Usage:
 (in this example there are 70000 iterations are calculated for a polytropic index of 3.0 but only ~1500 of those values will be output to the data file located at the desired path. If the 1500 is removed then all 70000 will be output.)
 
 Notes:  
-https://stackoverflow.com/questions/7539/use-of-java-math-mathcontext/7561 . 
+https://stackoverflow.com/questions/7539/use-of-java-math-mathcontext/7561 
 
